@@ -1,0 +1,20 @@
+<h1 [textContent]="title"></h1>
+
+<form (submit)="formSubmit('Hi')">
+  <input
+    [(ngModel)]="formData.name"
+    type="text"
+    name="text"
+  >
+  <input
+    [(ngModel)]="formData.email"
+    type="email"
+    name="email"
+  >
+  <input
+    [(ngModel)]="formData.password"
+    type="password"
+    name="password"
+  >
+  <button type="submit">Resgister</button>
+</form>
