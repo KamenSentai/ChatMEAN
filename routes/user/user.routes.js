@@ -13,19 +13,10 @@ const { createItem, readItem, updatetem, deleteItem } = require('./user.ctrl');
  */
 
 class UserRouterClass {
-  constructor() {
-
-  }
+  constructor() { }
 
   routes() {
     userRouter.post('/', (request, response) => {
-      // if (typeof request.body !== undefined || request.body !== null) {
-      //   UserModel.create(request.body)
-      //   .then(user => response.json({ msg: 'User created', req: request.body }))
-      //   .catch(err => response.json({ msg: 'User not created', data: err }));
-      // } else {
-      //   response.json({ msg: 'No data provided', data: null })
-      // }
 
       if (typeof request.body === undefined || request.body === null) {
         return response.json({ msg: 'No body data provided', data: null });

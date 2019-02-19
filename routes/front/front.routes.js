@@ -10,9 +10,7 @@ const frontRouter = express.Router();
  */
 
 class FrontRouterClass {
-  constructor() {
-
-  }
+  constructor() { }
 
   routes() {
     frontRouter.get('/*', (request, response) => {

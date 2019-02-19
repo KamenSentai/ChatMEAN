@@ -13,9 +13,7 @@ const { register, login } = require('./auth.ctrl');
  */
 
 class AuthRouterClass {
-  constructor() {
-
-  }
+  constructor() { }
 
   routes() {
     authRouter.put('/register', (request, response) => {

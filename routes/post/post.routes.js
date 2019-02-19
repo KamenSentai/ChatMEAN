@@ -10,9 +10,7 @@ const postRouter = express.Router();
  */
 
 class PostRouterClass {
-  constructor() {
-
-  }
+  constructor() { }
 
   routes() {
     postRouter.post('/', (request, response) => {
