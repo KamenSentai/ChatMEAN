@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class RegisterPageComponent implements OnInit {
   public formData: UserModel;
+  public submitFailure: Boolean = false;
   public passwordConfirmed: String;
   public passwordLength: Number;
   public messages: { [id: string]: string };
@@ -146,7 +147,7 @@ export class RegisterPageComponent implements OnInit {
         // Redirect
         if (apiResponse.success) this.router.navigate(['/']);
         // Log user already exists
-        else console.error(apiResponse);
+        else this.submitFailure = true;
       })
       .catch(apiResponse => console.error(apiResponse));
     }

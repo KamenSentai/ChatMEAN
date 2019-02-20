@@ -7,6 +7,7 @@
       <div class="login-container-right__title">
         Connexion
       </div>
+      <div class="error" [ngClass]="submitFailure ? 'error--active' : ''">L'adresse email ou le mot de passe est erroné.</div>
       <div class="input-group">
         <div class="input">
           <img class="icon" src="assets/images/envelope.svg" alt="email">
@@ -19,7 +20,6 @@
           <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="formData.password">
         </div>
       </div>
-      <div class="error">error</div>
       <button type="submit" (click)="preview($event);" class="login-container-right__submit">
         Connexion
       </button>

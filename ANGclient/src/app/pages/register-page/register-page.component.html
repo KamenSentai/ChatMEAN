@@ -7,6 +7,7 @@
       <div class="login-container-right__title">
         Inscription
       </div>
+      <div class="error" [ngClass]="submitFailure ? 'error--active' : ''">Un compte associé à cette adresse email existe déjà</div>
       <div class="input-group">
         <div class="input">
           <img class="icon" src="assets/images/profile.svg" alt="profile">
@@ -46,7 +47,7 @@
         Inscription
       </button>
       <a [routerLink]="'/login'" class="login-container-right__link">
-        Vous avez déjà un compte ?
+        Vous avez déjà un compte ? Connectez-vous !
       </a>
     </form>
   </div>

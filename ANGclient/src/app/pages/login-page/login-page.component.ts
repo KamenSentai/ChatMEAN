@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginPageComponent implements OnInit {
   public formData: UserModel;
+  public submitFailure: Boolean = false;
 
   constructor(private router: Router, private AuthService: AuthService) {
     this.formData = {
@@ -32,10 +33,13 @@ export class LoginPageComponent implements OnInit {
   public formSubmit(data: UserModel): void {
     const formData: UserModel = this.formData;
 
+    // Log in
     this.AuthService.login(formData)
     .then(apiResponse => {
+      // Redirect
       if (apiResponse.success) this.router.navigate(['/']);
-      else console.error(apiResponse);
+      // No account match
+      else this.submitFailure = true;
     })
     .catch(apiResponse => console.error(apiResponse));
   }
