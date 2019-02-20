@@ -26,13 +26,18 @@
   src: url('assets/fonts/proximaNova/proximaNovaThin.otf');
 }
 
-header {
-  display: none;
-}
-
 body {
   font-family: ProximaNova;
   font-weight: 300;
 
   color: $text;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  width: 130px;
+  height: 35px;
 }
