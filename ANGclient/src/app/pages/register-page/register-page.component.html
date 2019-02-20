@@ -7,25 +7,41 @@
       <div class="login-container-right__title">
         Inscription
       </div>
-      <div class="input">
-        <img class="icon" src="assets/images/profile.svg" alt="profile">
-        <input type="text" name="lastname" placeholder="Nom" [(ngModel)]="formData.lastname">
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/profile.svg" alt="profile">
+          <input type="text" name="lastname" placeholder="Nom" [(ngModel)]="formData.lastname">
+        </div>
+        <div class="error error--active">erreur</div>
       </div>
-      <div class="input">
-        <img class="icon" src="assets/images/profile.svg" alt="profile">
-        <input type="text" name="firstname" placeholder="Prénom" [(ngModel)]="formData.firstname">
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/profile.svg" alt="profile">
+          <input type="text" name="firstname" placeholder="Prénom" [(ngModel)]="formData.firstname">
+        </div>
+        <div class="error">erreur</div>
       </div>
-      <div class="input">
-        <img class="icon" src="assets/images/envelope.svg" alt="email">
-        <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/envelope.svg" alt="email">
+          <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+        </div>
+        <div class="error">erreur</div>
       </div>
-      <div class="input">
-        <img class="icon" src="assets/images/padlock.svg" alt="password">
-        <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="formData.password">
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/padlock.svg" alt="password">
+          <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="formData.password">
+        </div>
+        <div class="error">erreur</div>
       </div>
-      <div class="input">
-        <img class="icon" src="assets/images/padlock.svg" alt="password">
-        <input type="password" name="confirmation" placeholder="Confirmation du mot de passe" [(ngModel)]="passwordConfirmed">
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/padlock.svg" alt="password">
+          <input type="password" name="confirmation" placeholder="Confirmation du mot de passe"
+            [(ngModel)]="passwordConfirmed">
+        </div>
+        <div class="error">erreur</div>
       </div>
       <button type="submit" (click)="preview($event);" class="login-container-right__submit">
         Inscription
