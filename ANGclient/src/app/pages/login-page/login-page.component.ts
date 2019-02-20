@@ -32,7 +32,7 @@ export class LoginPageComponent implements OnInit {
   public formSubmit(data: UserModel): void {
     const formData: UserModel = this.formData;
 
-    this.AuthService.login(this.formData)
+    this.AuthService.login(formData)
     .then(apiResponse => {
       console.log(apiResponse.success);
 

@@ -40,7 +40,7 @@ export class RegisterPageComponent implements OnInit {
     const formData: UserModel = this.formData;
     const nameRegex: RegExp = new RegExp(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð .'-]+$/u);
     const emailRegex: RegExp = new RegExp(/^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/);
-    const passwordLength: Number = 1;
+    const passwordLength: Number = 8;
     let error: Boolean = false;
 
     for (let key in formData) {
@@ -85,7 +85,7 @@ export class RegisterPageComponent implements OnInit {
         formData.firstname = this.capitalizeFirstLetter(formData.firstname);
         formData.lastname = this.capitalizeFirstLetter(formData.lastname);
 
-        this.AuthService.register(this.formData)
+        this.AuthService.register(formData)
         .then(apiResponse => {
           if (apiResponse.success) this.router.navigate(['/']);
           else console.error(apiResponse);
