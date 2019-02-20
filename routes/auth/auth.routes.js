@@ -30,8 +30,8 @@ class AuthRouterClass {
       if (!success) response.json({ msg: 'Bad fiels provided', data: { miss: miss, extra: extra } });
       else {
         login(request.body, response)
-        .then(apiResponse => response.json({ msg: 'User logged', data: apiResponse }))
-        .catch(apiResponse => response.json({ msg: 'User not logged', data: apiResponse }));
+        .then(apiResponse => response.json({ msg: 'User logged', success: true, data: apiResponse }))
+        .catch(apiResponse => response.json({ msg: 'User not logged', success: false, data: apiResponse }));
       }
     });
   }

@@ -23,7 +23,7 @@ const login = (body, response) => {
       else {
         const validPassword = bcrypt.compareSync(body.password, user.password);
 
-        if (!validPassword) reject('Password not walid');
+        if (!validPassword) reject('Password not valid');
         else {
           response.cookie('hetic-blog', user.generateJwt());
 
