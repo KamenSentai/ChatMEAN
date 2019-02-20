@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -13,7 +14,7 @@ export class RegisterPageComponent implements OnInit {
   public formData: UserModel;
   public passwordConfirmed: String;
 
-  constructor(private AuthService: AuthService) {
+  constructor(private router: Router, private AuthService: AuthService) {
     this.formData = {
       firstname: undefined,
       lastname: undefined,
@@ -39,6 +40,7 @@ export class RegisterPageComponent implements OnInit {
     const formData: UserModel = this.formData;
     const nameRegex: RegExp = new RegExp(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð .'-]+$/u);
     const emailRegex: RegExp = new RegExp(/^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/);
+    const passwordLength: Number = 1;
     let error: Boolean = false;
 
     for (let key in formData) {
@@ -69,7 +71,7 @@ export class RegisterPageComponent implements OnInit {
         error = true;
       }
 
-      if (formData.password.length < 8) {
+      if (formData.password.length < passwordLength) {
         console.log('Password must contain at least 8 characters');
         error = true;
       }
@@ -83,10 +85,12 @@ export class RegisterPageComponent implements OnInit {
         formData.firstname = this.capitalizeFirstLetter(formData.firstname);
         formData.lastname = this.capitalizeFirstLetter(formData.lastname);
 
-        console.log(formData);
         this.AuthService.register(this.formData)
-        .then(apiRespnse => console.log(apiRespnse))
-        .catch(apiRespnse => console.error(apiRespnse));
+        .then(apiResponse => {
+          if (apiResponse.success) this.router.navigate(['/']);
+          else console.error(apiResponse);
+        })
+        .catch(apiResponse => console.error(apiResponse));
       }
     }
   }

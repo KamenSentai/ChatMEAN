@@ -27,8 +27,8 @@ class UserRouterClass {
       if (!success) response.json({ msg: 'Bad fiels provided', data: { miss: miss, extra: extra } });
       else {
         createItem(request.body)
-        .then(apiResponse => response.json({ msg: 'User created', data: apiResponse }))
-        .catch(apiResponse => response.json({ msg: 'User not created', data: apiResponse }));
+        .then(apiResponse => response.json({ msg: 'User created', success: true, data: apiResponse }))
+        .catch(apiResponse => response.json({ msg: 'User not created', success: false, data: apiResponse }));
       }
     });
 
