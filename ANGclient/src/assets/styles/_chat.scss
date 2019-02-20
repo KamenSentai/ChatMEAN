@@ -13,12 +13,13 @@
 }
 
 .chat-messages {
-  display: flex;
-  flex-direction: column;
+  display: grid;
 
+  height: 100vh;
   padding: 0 20px;
 
-  justify-content: space-between;
+  grid-template-rows: 1fr auto;
+  justify-content: space-between;;
 }
 
 .chat-user {
@@ -104,6 +105,10 @@
   align-self: flex-start;
 }
 
+.chat-messages-content {
+  overflow: scroll;
+}
+
 .chat-messages-name {
   display: flex;
 
@@ -147,6 +152,8 @@
 .chat-messages-other {
   display: flex;
 
+  margin-bottom: 15px;
+
   align-items: flex-end;
   p {
     font-size: 1.2rem;
@@ -160,14 +167,12 @@
     border-bottom-right-radius: 12px;
     background-color: #f2f5f9;
   }
-
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
 }
 
 .chat-messages-me {
   display: flex;
+
+  margin-bottom: 15px;
 
   align-items: flex-end;
   justify-content: flex-end;
@@ -183,10 +188,6 @@
     border-top-right-radius: 12px;
     border-bottom-left-radius: 12px;
     background-color: $primary;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 15px;
   }
 }
 
@@ -204,6 +205,8 @@
     justify-content: space-between;
     textarea {
       font-size: 1.4rem;
+
+      resize: none;
 
       border: none;
       &::placeholder {
