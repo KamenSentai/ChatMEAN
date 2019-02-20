@@ -54,39 +54,37 @@
       }
     }
   }
-
-  .submit {
-    font-size: 2rem;
-    font-weight: 300;
-
-    display: flex;
-
-    width: 230px;
-    height: 60px;
-    margin-top: 30px;
-
-    text-transform: uppercase;
-
-    color: $white;
-    border-radius: 35px;
-    background-color: $primary;
-
-    align-items: center;
-    justify-content: center;
-  }
-
-  .linkRegister {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    color: $primary;
-  }
 }
 
 .login-container-right__title {
   font-size: 3rem;
   font-weight: 700;
+}
+
+.login-container-right__submit {
+  font-size: 2rem;
+  font-weight: 300;
+
+  display: flex;
+
+  width: 230px;
+  height: 60px;
+  margin-top: 30px;
 
   text-transform: uppercase;
+
+  color: $white;
+  border-radius: 35px;
+  background-color: $primary;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container-right__link-register {
+  display: inline-block;
+
+  margin-top: 20px;
+
+  color: $primary;
 }
