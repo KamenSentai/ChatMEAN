@@ -34,8 +34,6 @@ export class LoginPageComponent implements OnInit {
 
     this.AuthService.login(formData)
     .then(apiResponse => {
-      console.log(apiResponse.success);
-
       if (apiResponse.success) this.router.navigate(['/']);
       else console.error(apiResponse);
     })
