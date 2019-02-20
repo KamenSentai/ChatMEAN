@@ -22,7 +22,7 @@ class UserRouterClass {
         return response.json({ msg: 'No body data provided', data: null });
       }
 
-      const { success, extra, miss } =  checkFields(['name', 'email', 'password'], request.body);
+      const { success, extra, miss } =  checkFields(['firstname', 'lastname', 'email', 'password'], request.body);
 
       if (!success) response.json({ msg: 'Bad fiels provided', data: { miss: miss, extra: extra } });
       else {

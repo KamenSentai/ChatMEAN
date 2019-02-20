@@ -1,6 +1,6 @@
 export interface UserModel {
-  name: String,
+  firstname: String,
+  lastname: String,
   email: String,
-  password: String,
-  cgu?: Boolean
+  password: String
 }

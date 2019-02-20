@@ -5,9 +5,6 @@ import { AuthService } from './services/auth/auth.service';
 @Component({
   selector: 'app-root',
   template: `
-    <header>
-      <img src="assets/images/logo.svg" alt="logo" class="logo" />
-    </header>
     <main>
       <router-outlet></router-outlet>
     </main>
@@ -17,13 +14,12 @@ import { AuthService } from './services/auth/auth.service';
 })
 
 export class AppComponent {
-  public title: String;
   public formData: UserModel;
 
   constructor(private AuthService: AuthService) {
-    this.title = 'Hello Angular';
     this.formData = {
-      name: undefined,
+      firstname: undefined,
+      lastname: undefined,
       email: undefined,
       password: undefined
     }
