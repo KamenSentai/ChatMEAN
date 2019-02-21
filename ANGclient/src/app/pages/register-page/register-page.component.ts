@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -145,7 +145,7 @@ export class RegisterPageComponent implements OnInit {
       this.AuthService.register(formData)
       .then(apiResponse => {
         // Redirect
-        if (apiResponse.success) this.router.navigate(['/']);
+        if (apiResponse.success) this.router.navigate(['/dashboard']);
         // Log user already exists
         else this.submitFailure = true;
       })

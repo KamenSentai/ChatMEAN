@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { UserModel } from 'src/app/models/user.model';
+import { CookieModel } from 'src/app/models/cookie.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,16 @@ export class AuthService {
     header.append('Content-type', 'application/json');
 
     return this.HttpClient.post(`${this.apiUrl}/auth/login`, data, { headers: header })
+    .toPromise()
+    .then(this.getData)
+    .catch(this.handleError);
+  }
+
+  public cookie(data: CookieModel): Promise<any> {
+    let header = new HttpHeaders();
+    header.append('Content-type', 'application/json');
+
+    return this.HttpClient.post(`${this.apiUrl}/auth/cookie`, data, { headers: header })
     .toPromise()
     .then(this.getData)
     .catch(this.handleError);

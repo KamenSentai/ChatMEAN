@@ -6,7 +6,7 @@ const express = require('express');
 const authRouter = express.Router();
 
 const checkFields = require('../../services/request.checker');
-const { register, login } = require('./auth.ctrl');
+const { register, login, cookie } = require('./auth.ctrl');
 
 /**
  * Definition
@@ -32,6 +32,16 @@ class AuthRouterClass {
         login(request.body, response)
         .then(apiResponse => response.json({ msg: 'User logged', success: true, data: apiResponse }))
         .catch(apiResponse => response.json({ msg: 'User not logged', success: false, data: apiResponse }));
+      }
+    });
+
+    authRouter.post('/cookie', (request, response) => {
+      if (typeof request.body === undefined || request.body === null) {
+        return response.json({ msg: 'No body data provided', data: null });
+      } else {
+        cookie(request.body, response)
+        .then(apiResponse => response.json({ msg: 'User already logged', success: true, data: apiResponse }))
+        .catch(apiResponse => response.json({ msg: 'User not logged yet', success: false, data: apiResponse }));
       }
     });
   }

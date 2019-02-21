@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
     this.AuthService.login(formData)
     .then(apiResponse => {
       // Redirect
-      if (apiResponse.success) this.router.navigate(['/']);
+      if (apiResponse.success) this.router.navigate(['/dashboard']);
       // No account match
       else this.submitFailure = true;
     })

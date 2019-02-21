@@ -25,12 +25,32 @@ const login = (body, response) => {
 
         if (!validPassword) reject('Password not valid');
         else {
-          response.cookie('ChatMEAN', user.generateJwt());
+          response.cookie('ChatMEAN', `${user.generateJwt()}${user._id}`);
 
           return resolve(user);
         }
       }
     });
+  });
+};
+
+const cookie = (body, response) => {
+  return new Promise((resolve, reject) => {
+    UserModel.find({}, (error, users) => {
+      let userFound;
+
+      if (error) return reject(error);
+      else {
+        users.forEach((user) => {
+          if (body.value.includes(user._id)) {
+            userFound = user;
+            return resolve(userFound);
+          }
+        });
+
+        reject('User not valid');
+      }
+    })
   });
 };
 
@@ -40,5 +60,6 @@ const login = (body, response) => {
 
 module.exports = {
   register,
-  login
+  login,
+  cookie
 };
