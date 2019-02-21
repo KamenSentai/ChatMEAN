@@ -7,7 +7,9 @@ import { AuthService } from './services/auth/auth.service';
   selector: 'app-root',
   template: `
     <header>
-      <img src="assets/images/logo.svg" alt="logo" class="logo" />
+      <a [routerLink]="'/'">
+        <img src="assets/images/logo.svg" alt="logo" class="logo" />
+      </a>
     </header>
     <main>
       <router-outlet></router-outlet>
