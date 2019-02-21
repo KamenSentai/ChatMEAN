@@ -26,8 +26,8 @@ export class AppComponent {
     };
   }
 
-  private getCookie(cname) {
-    const name = cname + '=';
+  private getCookie(cookieName) {
+    const name = cookieName + '=';
     const decodedCookie = decodeURIComponent(document.cookie);
     const ca = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {
@@ -46,7 +46,9 @@ export class AppComponent {
     // Send cookie
     this.AuthService.cookie(this.cookieData)
     .then(apiResponse => {
-      if (apiResponse.success && this.router.url !== '/dashboard') this.router.navigate(['/dashboard']);
+      if (apiResponse.success) {
+        if (this.router.url !== '/dashboard') this.router.navigate(['/dashboard']);
+      }
       else if (this.router.url === '/dashboard') this.router.navigate(['/']);
     })
     .catch(apiResponse => console.error(apiResponse));
