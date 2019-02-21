@@ -198,14 +198,8 @@
     </div>
   </main>
   <aside class="chat-user">
-    <div class="chat-user__profile">
-      L
-    </div>
-    <h3 class="chat-user__name">
-      Loris Marino
-    </h3>
-    <p class="chat-user__email">
-      M.loris@hotmail.fr
-    </p>
+    <div class="chat-user__profile" [textContent]="userData.firstname.charAt(0)"></div>
+    <h3 class="chat-user__name" [textContent]="userData.firstname + ' ' + userData.lastname"></h3>
+    <p class="chat-user__email" [textContent]="userData.email"></p>
   </aside>
 </section>

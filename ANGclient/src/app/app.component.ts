@@ -7,9 +7,7 @@ import { AuthService } from './services/auth/auth.service';
   selector: 'app-root',
   template: `
     <header>
-      <a [routerLink]="'/'">
-        <img src="assets/images/logo.svg" alt="logo" class="logo" />
-      </a>
+      <img src="assets/images/logo.svg" alt="logo" class="logo" />
     </header>
     <main>
       <router-outlet></router-outlet>
@@ -19,7 +17,7 @@ import { AuthService } from './services/auth/auth.service';
 })
 
 export class AppComponent {
-  public cookieData: CookieModel;
+  private cookieData: CookieModel;
 
   constructor(private router: Router, private AuthService: AuthService) {
     this.cookieData = {
