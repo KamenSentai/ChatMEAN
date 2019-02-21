@@ -26,15 +26,16 @@ export class AppComponent {
     };
   }
 
-  private getCookie(cookieName) {
-    const name = cookieName + '=';
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1);
-      if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  private getCookie(cookieName: String) {
+    const name: string = cookieName + '=';
+    const decodedCookie: string = decodeURIComponent(document.cookie);
+    const cookies: Array<string> = decodedCookie.split(';');
+
+    for (let cookie of cookies) {
+      while (cookie.charAt(0) == ' ') cookie = cookie.substring(1);
+      if (cookie.indexOf(name) == 0) return cookie.substring(name.length, cookie.length);
     }
+
     return '';
   }
 
