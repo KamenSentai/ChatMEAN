@@ -25,7 +25,7 @@ const login = (body, response) => {
 
         if (!validPassword) reject('Password not valid');
         else {
-          response.cookie('hetic-blog', user.generateJwt());
+          response.cookie('ChatMEAN', user.generateJwt());
 
           return resolve(user);
         }

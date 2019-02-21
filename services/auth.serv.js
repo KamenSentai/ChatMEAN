@@ -11,7 +11,7 @@ const UserModel = require('../models/user.model');
 
 const cookieExtractor = (request) => {
   let token = null;
-  if (request && request.cookies) token = request.cookies['hetic-blog'];
+  if (request && request.cookies) token = request.cookies['ChatMEAN'];
 };
 
 const authJwt = (passport) => {
