@@ -6,7 +6,6 @@ import { MessageModel } from '../../models/message.model';
 import { AuthService } from '../../services/auth/auth.service';
 import { UsersService } from '../../services/users/users.service';
 import { MessagesService } from '../../services/messages/messages.service';
-import io from 'socket.io-client';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -27,6 +26,12 @@ export class DashboardPageComponent implements OnInit {
   private url: String = 'http://localhost:9876/dashboard';
   private socket;
 
+  /**
+   * @param router
+   * @param AuthService
+   * @param UsersService
+   * @param MessagesService
+   */
   constructor(
     private router: Router,
     private AuthService: AuthService,
@@ -80,6 +85,9 @@ export class DashboardPageComponent implements OnInit {
     this.loaded = false;
   }
 
+  /**
+   * @param cookieName
+   */
   private getCookie(cookieName: String) {
     const name: string = cookieName + '=';
     const decodedCookie: string = decodeURIComponent(document.cookie);
@@ -93,7 +101,10 @@ export class DashboardPageComponent implements OnInit {
     return '';
   }
 
-  private deleteCookie = (name: String) => {
+  /**
+   * @param name
+   */
+  private deleteCookie = (name: String): void => {
     document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   };
 
@@ -134,11 +145,18 @@ export class DashboardPageComponent implements OnInit {
     .catch(apiResponse => console.error(apiResponse));
   }
 
-  public selectUser(index: number) {
+  /**
+   * @param index
+   */
+  public selectUser(index: number): void {
     this.currentIndex = index;
     this.message.to = this.usersData[this.currentIndex].email;
   }
 
+  /**
+   * @param event
+   * @param message
+   */
   public sendMessage(event: Event, message: String) {
     event.preventDefault();
 
@@ -154,6 +172,9 @@ export class DashboardPageComponent implements OnInit {
     this.ngOnInit();
   }
 
+  /**
+   * @param index
+   */
   public displayLastMessage(index: number) {
     let messagesWithContact: Array<MessageModel> = [];
     const contactEmail: String = this.usersData[index].email
@@ -181,7 +202,10 @@ export class DashboardPageComponent implements OnInit {
     return messagesWithContact[lastIndex] ? who + messagesWithContact[lastIndex].value : '';
   }
 
-  public logout() {
+  /**
+   * @return void
+   */
+  public logout(): void {
     this.deleteCookie(this.cookieName);
   }
 }

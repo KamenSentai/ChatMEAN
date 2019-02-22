@@ -14,6 +14,10 @@ export class LoginPageComponent implements OnInit {
   public formData: UserModel;
   public submitFailure: Boolean = false;
 
+  /**
+   * @param router
+   * @param AuthService
+   */
   constructor(private router: Router, private AuthService: AuthService) {
     this.formData = {
       firstname: undefined,
@@ -25,11 +29,17 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() { }
 
-  public preview(event: Event) {
+  /**
+   * @param event
+   */
+  public preview(event: Event):void {
     event.preventDefault();
     this.formSubmit(this.formData);
   }
 
+  /**
+   * @return void
+   */
   public formSubmit(data: UserModel): void {
     const formData: UserModel = this.formData;
 

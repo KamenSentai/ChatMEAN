@@ -20,6 +20,10 @@ export class RegisterPageComponent implements OnInit {
   public messagesMissing: { [id: string]: string };
   public errors: { [id: string]: boolean };
 
+  /**
+   * @param router
+   * @param AuthService
+   */
   constructor(private router: Router, private AuthService: AuthService) {
     this.formData = {
       firstname: undefined,
@@ -66,15 +70,24 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit() { }
 
+  /**
+   * @param string
+   */
   private capitalizeFirstLetter(string: String) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  /**
+   * @param event
+   */
   public preview(event: Event) {
     event.preventDefault();
     this.formSubmit(this.formData);
   }
 
+  /**
+   * @param data
+   */
   public formSubmit(data: UserModel): void {
     const formData: UserModel = this.formData;
     const nameRegex: RegExp = new RegExp(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð .'-]+$/u);
