@@ -45,7 +45,7 @@
     <div class="chat-user__profile" [textContent]="userData.firstname.charAt(0)"></div>
     <h3 class="chat-user__name" [textContent]="userData.firstname + ' ' + userData.lastname"></h3>
     <p class="chat-user__email" [textContent]="userData.email"></p>
-    <a [routerLink]="'/'" class="chat-user__disconnect">
+    <a [routerLink]="'/'" class="chat-user__disconnect" (click)="logout()">
       Déconnexion
     </a>
   </aside>

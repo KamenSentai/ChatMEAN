@@ -6,7 +6,7 @@ import { MessageModel } from '../../models/message.model';
 import { AuthService } from '../../services/auth/auth.service';
 import { UsersService } from '../../services/users/users.service';
 import { MessagesService } from '../../services/messages/messages.service';
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -15,6 +15,7 @@ import { MessagesService } from '../../services/messages/messages.service';
 })
 
 export class DashboardPageComponent implements OnInit {
+  private cookieName: String
   private cookieData: CookieModel;
   public userData: UserModel;
   public usersData: Array<UserModel>;
@@ -23,8 +24,8 @@ export class DashboardPageComponent implements OnInit {
   public messages: Array<MessageModel>;
   public messagesWithContact: Array<Array<MessageModel>>;
   public loaded: Boolean;
-  // private url: String = 'http://localhost:9876';
-  // private socket;
+  private url: String = 'http://localhost:9876/dashboard';
+  private socket;
 
   constructor(
     private router: Router,
@@ -32,6 +33,8 @@ export class DashboardPageComponent implements OnInit {
     private UsersService: UsersService,
     private MessagesService: MessagesService
   ) {
+    this.cookieName = 'ChatMEAN';
+
     this.cookieData = {
       name: undefined,
       value: undefined
@@ -90,9 +93,13 @@ export class DashboardPageComponent implements OnInit {
     return '';
   }
 
+  private deleteCookie = (name: String) => {
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  };
+
   ngOnInit() {
-    const cookieValue = this.getCookie('ChatMEAN');
-    this.cookieData.name = 'ChatMEAN';
+    const cookieValue = this.getCookie(this.cookieName);
+    this.cookieData.name = this.cookieName;
     this.cookieData.value = cookieValue;
 
     // Send cookie
@@ -126,11 +133,13 @@ export class DashboardPageComponent implements OnInit {
     })
     .catch(apiResponse => console.error(apiResponse));
 
-    // // Socket
-    // this.socket = io.connect(this.url);
-    // this.socket.on('MessageAdded', (data) => {
-    //   console.log('MessageAdded: '+ JSON.stringify(data));
-    // });
+    // Socket
+    this.socket = io.connect(this.url);
+    console.log(this.socket);
+
+    this.socket.on('MessageAdded', (data) => {
+      console.log('MessageAdded: '+ JSON.stringify(data));
+    });
   }
 
   public selectUser(index: number) {
@@ -149,6 +158,8 @@ export class DashboardPageComponent implements OnInit {
     .catch(apiResponse => console.error(apiResponse));
 
     message = '';
+
+    this.ngOnInit();
   }
 
   public displayLastMessage(index: number) {
@@ -176,5 +187,9 @@ export class DashboardPageComponent implements OnInit {
     }
 
     return messagesWithContact[lastIndex] ? who + messagesWithContact[lastIndex].value : '';
+  }
+
+  public logout() {
+    this.deleteCookie(this.cookieName);
   }
 }
