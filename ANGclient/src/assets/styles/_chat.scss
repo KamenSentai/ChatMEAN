@@ -1,3 +1,7 @@
+body {
+  background-color: $bg;
+}
+
 .chat {
   display: grid;
 
@@ -7,18 +11,36 @@
 }
 
 .chat-users {
-  padding-top: 80px;
+  position: relative;
+
+  margin-top: 80px;
 
   background-color: $bg;
+
+  overflow: scroll;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    height: 80px;
+
+    background-color: $bg;
+  }
 }
 
 .chat-messages {
-  display: grid;
+  display: flex;
+  flex-direction: column;
 
   height: 100vh;
   padding: 0 20px;
 
-  grid-template-rows: 1fr auto;
+  background-color: $white;
+
   justify-content: space-between;;
 }
 
@@ -112,6 +134,9 @@
 
 .chat-messages-content {
   overflow: scroll;
+
+  margin-top: 0;
+  margin-bottom: auto;
 }
 
 .chat-messages-name {
