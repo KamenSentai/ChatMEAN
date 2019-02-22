@@ -34,7 +34,12 @@ export class DashboardPageComponent implements OnInit {
       password: undefined
     };
 
-    this.usersData = [];
+    this.usersData = [{
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: undefined
+    }];
 
     this.currentIndex = 0;
   }
