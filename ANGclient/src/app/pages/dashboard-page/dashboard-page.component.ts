@@ -12,15 +12,21 @@ import { UsersService } from '../../services/users/users.service';
 })
 
 export class DashboardPageComponent implements OnInit {
+  private cookieData: CookieModel;
   public userData: UserModel;
   public usersData: Array<UserModel>;
-  private cookieData: CookieModel;
+  public currentIndex: Number;
 
   constructor(
     private router: Router,
     private AuthService: AuthService,
     private UsersService: UsersService
   ) {
+    this.cookieData = {
+      name: undefined,
+      value: undefined
+    };
+
     this.userData = {
       firstname: '',
       lastname: '',
@@ -30,10 +36,7 @@ export class DashboardPageComponent implements OnInit {
 
     this.usersData = [];
 
-    this.cookieData = {
-      name: undefined,
-      value: undefined
-    };
+    this.currentIndex = 0;
   }
 
   private getCookie(cookieName: String) {
@@ -74,5 +77,9 @@ export class DashboardPageComponent implements OnInit {
       this.usersData.splice(indexUser, 1);
     })
     .catch(apiResponse => console.error(apiResponse));
+  }
+
+  public selectUser(index: Number) {
+    this.currentIndex = index;
   }
 }

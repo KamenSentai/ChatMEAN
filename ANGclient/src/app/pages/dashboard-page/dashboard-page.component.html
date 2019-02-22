@@ -1,129 +1,19 @@
 <section class="chat">
   <aside class="chat-users">
-    <div class="chat-users-item chat-users-item--active">
+    <div
+      class="chat-users-item"
+      *ngFor="let user of usersData; let i = index"
+      [ngClass]="i === currentIndex ? 'chat-users-item--active' : ''"
+      (click)="selectUser(i)"
+    >
       <div class="chat-users-item-left">
         <div class="chat-users-item__profile">
-          L
+          {{ user.firstname.charAt(O) }}
         </div>
         <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
+          <h3>{{ user.firstname + ' ' + user.lastname }}</h3>
           <p>Messag dsf fre fer ferfe</p>
         </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
-      </div>
-    </div>
-    <div class="chat-users-item">
-      <div class="chat-users-item-left">
-        <div class="chat-users-item__profile">
-          L
-        </div>
-        <div class="chat-users-item__message">
-          <h3>Loris Marino</h3>
-          <p>Messag dsf fre fer ferfe</p>
-        </div>
-      </div>
-      <div class="chat-users-item__time">
-        1min
       </div>
     </div>
   </aside>
