@@ -132,14 +132,6 @@ export class DashboardPageComponent implements OnInit {
       .catch(apiResponse => console.error(apiResponse));
     })
     .catch(apiResponse => console.error(apiResponse));
-
-    // Socket
-    this.socket = io.connect(this.url);
-    console.log(this.socket);
-
-    this.socket.on('MessageAdded', (data) => {
-      console.log('MessageAdded: '+ JSON.stringify(data));
-    });
   }
 
   public selectUser(index: number) {
