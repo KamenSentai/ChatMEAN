@@ -137,4 +137,29 @@ export class DashboardPageComponent implements OnInit {
 
     message = '';
   }
+
+  public displayLastMessage(index: number) {
+    let messagesWithContact: Array<MessageModel> = [];
+    const contactEmail: String = this.usersData[index].email
+
+    for (const message of this.messages) {
+      if (message.from === contactEmail || message.to === contactEmail) messagesWithContact.push(message);
+    }
+
+    messagesWithContact.sort((a, b) => {
+      const dateA: any = new Date(a.date);
+      const dateB: any = new Date(b.date);
+      return dateA - dateB;
+    });
+
+    const lastIndex: number = messagesWithContact.length - 1;
+    let who: string = '';
+
+    if (messagesWithContact[lastIndex]) {
+      if (messagesWithContact[lastIndex].from === this.userData.email) who = 'Vous : '
+      else who = `${this.usersData[index].firstname} : `;
+    }
+
+    return messagesWithContact[lastIndex] ? who + messagesWithContact[lastIndex].value : '';
+  }
 }

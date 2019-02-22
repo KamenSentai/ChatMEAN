@@ -21,7 +21,8 @@
     "mongoose": "^5.4.7",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

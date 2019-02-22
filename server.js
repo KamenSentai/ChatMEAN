@@ -7,6 +7,8 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
+const http = require('http');
+const socket = require('socket.io');
 const cookieParser = require('cookie-parser');
 const dbConnect = require('./services/mongodb.serv');
 const mainRouter = require('./routes/main.router');
@@ -17,6 +19,21 @@ const mainRouter = require('./routes/main.router');
 
 const server = express();
 const port = process.env.PORT;
+const app = http.Server(server);
+const io = socket(app);
+
+// Socket.io connection
+io.on('connection', (socket) => {
+  console.log('Connected to Socket' + socket.id);
+
+  socket.on('createItem', (message) => {
+    console.log('socketData: '+ JSON.stringify(message));
+  });
+
+  socket.on('readItem', (message) => {
+    console.log('socketData: '+ JSON.stringify(message));
+  });
+});
 
 class ServerClass {
   init() {
