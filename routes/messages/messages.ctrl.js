@@ -10,7 +10,7 @@ const MessageModel = require('../../models/message.model');
 
 const createItem = (body) => {
   return new Promise((resolve, reject) => {
-    if (Object.entries(obj).length !== 0 && obj.constructor === Object) {
+    if (Object.entries(body).length !== 0 && body.constructor === Object) {
       MessageModel.create(body)
       .then(mongoResponse => resolve(mongoResponse))
       .catch(mongoResponse => reject(mongoResponse));

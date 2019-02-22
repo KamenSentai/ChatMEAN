@@ -177,7 +177,13 @@
     <div class="chat-messages-write">
       <div class="chat-messages-write__separator"></div>
       <form>
-        <textarea name="" rows="2" placeholder="Entrez votre message..."></textarea>
+        <textarea
+          #message
+          name=""
+          rows="2"
+          placeholder="Entrez votre message..."
+          (keydown.enter)="sendMessage($event, message.value); message.value = ''"
+        ></textarea>
         <div class="chat-messages-write-icons">
           <img src="assets/images/paperclip.svg" alt="files">
           <img src="assets/images/happy.svg" alt="smiley">

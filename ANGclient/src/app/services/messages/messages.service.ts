@@ -1,20 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageModel } from '../../models/message.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UsersService {
+export class MessagesService {
   private apiUrl: String = `http://localhost:9876/api`;
 
   constructor(private HttpClient: HttpClient) { }
 
-  public fetch(): Promise<any> {
+  public create(data: MessageModel): Promise<any> {
     let header = new HttpHeaders();
     header.append('Content-type', 'application/json');
 
-    return this.HttpClient.post(`${this.apiUrl}/users`, { headers: header })
+    return this.HttpClient.post(`${this.apiUrl}/messages/create`, data, { headers: header })
+    .toPromise()
+    .then(this.getData)
+    .catch(this.handleError);
+  }
+
+  public read(): Promise<any> {
+    let header = new HttpHeaders();
+    header.append('Content-type', 'application/json');
+
+    return this.HttpClient.post(`${this.apiUrl}/messages/read`, { headers: header })
     .toPromise()
     .then(this.getData)
     .catch(this.handleError);
