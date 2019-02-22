@@ -27,11 +27,11 @@ io.on('connection', (socket) => {
   console.log('Connected to Socket' + socket.id);
 
   socket.on('createItem', (message) => {
-    console.log('socketData: '+ JSON.stringify(message));
+    console.log('socketData: ' + JSON.stringify(message));
   });
 
   socket.on('readItem', (message) => {
-    console.log('socketData: '+ JSON.stringify(message));
+    console.log('socketData: ' + JSON.stringify(message));
   });
 });
 

@@ -128,8 +128,8 @@ export class DashboardPageComponent implements OnInit {
 
     // // Socket
     // this.socket = io.connect(this.url);
-    // this.socket.on('TodoAdded', (data) => {
-    //   console.log('TodoAdded: '+JSON.stringify(data));
+    // this.socket.on('MessageAdded', (data) => {
+    //   console.log('MessageAdded: '+ JSON.stringify(data));
     // });
   }
 
