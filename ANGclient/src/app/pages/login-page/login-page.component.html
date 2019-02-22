@@ -1,0 +1,31 @@
+<section class="login-container">
+  <div class="login-container-left">
+    <img src="assets/images/login.svg" alt="login">
+  </div>
+  <div class="login-container-right">
+    <form method="POST" (submit)="formSubmit()">
+      <div class="login-container-right__title">
+        Connexion
+      </div>
+      <div class="error" [ngClass]="submitFailure ? 'error--active' : ''">L'adresse email ou le mot de passe est erroné.</div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/envelope.svg" alt="email">
+          <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/padlock.svg" alt="password">
+          <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="formData.password">
+        </div>
+      </div>
+      <button type="submit" (click)="preview($event);" class="login-container-right__submit">
+        Connexion
+      </button>
+      <a [routerLink]="'/register'" class="login-container-right__link">
+        Vous n'avez pas de compte ? Inscrivez-vous !
+      </a>
+    </form>
+  </div>
+</section>

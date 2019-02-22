@@ -1,0 +1,54 @@
+<section class="login-container">
+  <div class="login-container-left">
+    <img src="assets/images/register.svg" alt="login">
+  </div>
+  <div class="login-container-right">
+    <form method="POST" (submit)="formSubmit()">
+      <div class="login-container-right__title">
+        Inscription
+      </div>
+      <div class="error" [ngClass]="submitFailure ? 'error--active' : ''">Un compte associé à cette adresse email existe déjà</div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/profile.svg" alt="profile">
+          <input type="text" name="lastname" placeholder="Nom" [(ngModel)]="formData.lastname">
+        </div>
+        <div class="error" [ngClass]="errors.lastname ? 'error--active' : ''" [textContent]="messages.lastname"></div>
+      </div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/profile.svg" alt="profile">
+          <input type="text" name="firstname" placeholder="Prénom" [(ngModel)]="formData.firstname">
+        </div>
+        <div class="error" [ngClass]="errors.firstname ? 'error--active' : ''" [textContent]="messages.firstname"></div>
+      </div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/envelope.svg" alt="email">
+          <input type="email" name="email" placeholder="Email" [(ngModel)]="formData.email">
+        </div>
+        <div class="error" [ngClass]="errors.email ? 'error--active' : ''" [textContent]="messages.email"></div>
+      </div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/padlock.svg" alt="password">
+          <input type="password" name="password" placeholder="Mot de passe" [(ngModel)]="formData.password">
+        </div>
+        <div class="error" [ngClass]="errors.password ? 'error--active' : ''" [textContent]="messages.password"></div>
+      </div>
+      <div class="input-group">
+        <div class="input">
+          <img class="icon" src="assets/images/padlock.svg" alt="password">
+          <input type="password" name="passwordConfirmed" placeholder="Confirmation du mot de passe" [(ngModel)]="passwordConfirmed">
+        </div>
+        <div class="error" [ngClass]="errors.passwordConfirmed ? 'error--active' : ''" [textContent]="messages.passwordConfirmed"></div>
+      </div>
+      <button type="submit" (click)="preview($event);" class="login-container-right__submit">
+        Inscription
+      </button>
+      <a [routerLink]="'/login'" class="login-container-right__link">
+        Vous avez déjà un compte ? Connectez-vous !
+      </a>
+    </form>
+  </div>
+</section>
