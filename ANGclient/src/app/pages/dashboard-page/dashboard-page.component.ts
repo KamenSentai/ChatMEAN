@@ -20,6 +20,7 @@ export class DashboardPageComponent implements OnInit {
   public usersData: Array<UserModel>;
   public currentIndex: number;
   private message: MessageModel;
+  public messages: Array<MessageModel>;
   // private url: String = 'http://localhost:9876';
   // private socket;
 
@@ -56,6 +57,13 @@ export class DashboardPageComponent implements OnInit {
       value: undefined,
       date: undefined
     };
+
+    this.messages = [{
+      from: this.userData.email,
+      to: this.usersData[this.currentIndex].email,
+      value: undefined,
+      date: undefined
+    }];
   }
 
   private getCookie(cookieName: String) {
@@ -86,6 +94,12 @@ export class DashboardPageComponent implements OnInit {
       else if (this.router.url === '/dashboard') this.router.navigate(['/']);
     })
     .then(() => { this.message.from = this.userData.email })
+    .then(() => {
+      // Fetch all messages
+      this.MessagesService.read(this.userData)
+      .then(apiResponse => this.messages = apiResponse.data)
+      .catch(apiResponse => console.error(apiResponse));
+    })
     .catch(apiResponse => console.error(apiResponse));
 
     // Fetch all users

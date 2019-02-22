@@ -26,7 +26,7 @@ const readItem = (body) => {
       if (error) return reject(error);
       else {
         messages.forEach((message) => {
-          messagesFound.push(message);
+          if (message.from === body.email || message.to === body.email) messagesFound.push(message);
         });
 
         return resolve(messagesFound);

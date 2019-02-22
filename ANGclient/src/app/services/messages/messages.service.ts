@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserModel } from '../../models/user.model';
 import { MessageModel } from '../../models/message.model';
 
 @Injectable({
@@ -21,11 +22,11 @@ export class MessagesService {
     .catch(this.handleError);
   }
 
-  public read(): Promise<any> {
+  public read(data: UserModel): Promise<any> {
     let header = new HttpHeaders();
     header.append('Content-type', 'application/json');
 
-    return this.HttpClient.post(`${this.apiUrl}/messages/read`, { headers: header })
+    return this.HttpClient.post(`${this.apiUrl}/messages/read`, data, { headers: header })
     .toPromise()
     .then(this.getData)
     .catch(this.handleError);
