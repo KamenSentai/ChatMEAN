@@ -1,11 +1,7 @@
 <section class="chat">
   <aside class="chat-users">
-    <div
-      class="chat-users-item"
-      *ngFor="let user of usersData; let i = index"
-      [ngClass]="i === currentIndex ? 'chat-users-item--active' : ''"
-      (click)="selectUser(i)"
-    >
+    <div class="chat-users-item" *ngFor="let user of usersData; let i = index"
+      [ngClass]="i === currentIndex ? 'chat-users-item--active' : ''" (click)="selectUser(i)">
       <div class="chat-users-item-left">
         <div class="chat-users-item__profile">
           {{ user.firstname.charAt(O) }}
@@ -23,10 +19,8 @@
       <!-- <div class="chat-messages-name__statut chat-messages-name__statut--online"></div> -->
     </div>
     <div class="chat-messages-content" *ngIf="loaded">
-      <div
-        *ngFor="let message of messagesWithContact[currentIndex]; let i = index"
-        [ngClass]="message.from === userData.email ? 'chat-messages-me' : 'chat-messages-other'"
-      >
+      <div *ngFor="let message of messagesWithContact[currentIndex]; let i = index"
+        [ngClass]="message.from === userData.email ? 'chat-messages-me' : 'chat-messages-other'">
         <div class="chat-messages__profile">
           {{ message.from === userData.email ? userData.firstname.charAt(0) : usersData[currentIndex].firstname.charAt(0) }}
         </div>
@@ -38,13 +32,8 @@
     <div class="chat-messages-write">
       <div class="chat-messages-write__separator"></div>
       <form>
-        <textarea
-          #message
-          name=""
-          rows="2"
-          placeholder="Entrez votre message..."
-          (keydown.enter)="sendMessage($event, message.value); message.value = ''"
-        ></textarea>
+        <textarea #message name="" rows="2" placeholder="Entrez votre message..."
+          (keydown.enter)="sendMessage($event, message.value); message.value = ''"></textarea>
         <div class="chat-messages-write-icons">
           <img src="assets/images/paperclip.svg" alt="files">
           <img src="assets/images/happy.svg" alt="smiley">
@@ -56,5 +45,8 @@
     <div class="chat-user__profile" [textContent]="userData.firstname.charAt(0)"></div>
     <h3 class="chat-user__name" [textContent]="userData.firstname + ' ' + userData.lastname"></h3>
     <p class="chat-user__email" [textContent]="userData.email"></p>
+    <a [routerLink]="'/'" class="chat-user__disconnect">
+      Déconnexion
+    </a>
   </aside>
 </section>
