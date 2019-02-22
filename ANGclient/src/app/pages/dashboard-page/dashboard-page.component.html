@@ -22,156 +22,17 @@
         <h3>{{ usersData[currentIndex].firstname + ' ' + usersData[currentIndex].lastname }}</h3>
       <div class="chat-messages-name__statut chat-messages-name__statut--online"></div>
     </div>
-    <div class="chat-messages-content">
-      <div class="chat-messages-other">
+    <div class="chat-messages-content" *ngIf="loaded">
+      <div
+        *ngFor="let message of messagesWithContact[currentIndex]; let i = index"
+        [ngClass]="message.from === userData.email ? 'chat-messages-me' : 'chat-messages-other'"
+      >
         <div class="chat-messages__profile">
-          L
+          {{ message.from === userData.email ? userData.firstname.charAt(0) : usersData[currentIndex].firstname.charAt(0) }}
         </div>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
+          {{ message.value }}
         </p>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
-      </div>
-      <div class="chat-messages-me">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, commodi. Libero, rem repellendus nobis
-          voluptatum facere, itaque accusantium similique repudiandae repellat dolorum, fuga impedit. Nesciunt mollitia
-          fugiat repellendus maxime odit.
-        </p>
-        <div class="chat-messages__profile">
-          L
-        </div>
       </div>
     </div>
     <div class="chat-messages-write">

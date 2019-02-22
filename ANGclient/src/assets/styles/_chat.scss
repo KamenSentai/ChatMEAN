@@ -73,6 +73,7 @@
   font-weight: 400;
 
   display: flex;
+  flex: 1 0 auto;
 
   width: 35px;
   height: 35px;
@@ -94,9 +95,12 @@
   }
 
   p {
+    margin: 0;
+    max-height: 1.5em;
+
     font-size: 1.1rem;
 
-    margin: 0;
+    overflow: hidden;
   }
 }
 
@@ -156,7 +160,12 @@
   margin-bottom: 15px;
 
   align-items: flex-end;
+
+  .chat-messages__profile {
+    order: 1;
+  }
   p {
+    order: 2;
     font-size: 1.2rem;
 
     max-width: 60%;
@@ -177,7 +186,12 @@
 
   align-items: flex-end;
   justify-content: flex-end;
+
+  .chat-messages__profile {
+    order: 2;
+  }
   p {
+    order: 1;
     font-size: 1.2rem;
 
     max-width: 60%;

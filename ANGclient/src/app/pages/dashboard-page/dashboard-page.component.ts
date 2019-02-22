@@ -21,6 +21,8 @@ export class DashboardPageComponent implements OnInit {
   public currentIndex: number;
   private message: MessageModel;
   public messages: Array<MessageModel>;
+  public messagesWithContact: Array<Array<MessageModel>>;
+  public loaded: Boolean;
   // private url: String = 'http://localhost:9876';
   // private socket;
 
@@ -64,6 +66,15 @@ export class DashboardPageComponent implements OnInit {
       value: undefined,
       date: undefined
     }];
+
+    this.messagesWithContact = [[{
+      from: this.userData.email,
+      to: this.usersData[this.currentIndex].email,
+      value: undefined,
+      date: undefined
+    }]];
+
+    this.loaded = false;
   }
 
   private getCookie(cookieName: String) {
@@ -100,17 +111,19 @@ export class DashboardPageComponent implements OnInit {
       .then(apiResponse => this.messages = apiResponse.data)
       .catch(apiResponse => console.error(apiResponse));
     })
-    .catch(apiResponse => console.error(apiResponse));
-
-    // Fetch all users
-    this.UsersService.fetch()
-    .then(apiResponse => this.usersData = apiResponse.data)
     .then(() => {
-      const user = this.usersData.find(user => user.email === this.userData.email);
-      const indexUser = this.usersData.indexOf(user);
-      this.usersData.splice(indexUser, 1);
+      // Fetch all users
+      this.UsersService.fetch()
+      .then(apiResponse => this.usersData = apiResponse.data)
+      .then(() => {
+        const user = this.usersData.find(user => user.email === this.userData.email);
+        const indexUser = this.usersData.indexOf(user);
+        this.usersData.splice(indexUser, 1);
+      })
+      .then(() => { this.message.to = this.usersData[this.currentIndex].email })
+      .then(() => { this.loaded = true })
+      .catch(apiResponse => console.error(apiResponse));
     })
-    .then(() => { this.message.to = this.usersData[this.currentIndex].email })
     .catch(apiResponse => console.error(apiResponse));
 
     // // Socket
@@ -156,8 +169,10 @@ export class DashboardPageComponent implements OnInit {
     let who: string = '';
 
     if (messagesWithContact[lastIndex]) {
-      if (messagesWithContact[lastIndex].from === this.userData.email) who = 'Vous : '
+      if (messagesWithContact[lastIndex].from === this.userData.email) who = 'Vous : ';
       else who = `${this.usersData[index].firstname} : `;
+
+      this.messagesWithContact[index] = messagesWithContact;
     }
 
     return messagesWithContact[lastIndex] ? who + messagesWithContact[lastIndex].value : '';
