@@ -158,8 +158,16 @@ export class RegisterPageComponent implements OnInit {
       this.AuthService.register(formData)
       .then(apiResponse => {
         // Redirect
-        // if (apiResponse.success) this.router.navigate(['/dashboard']);
-        if (apiResponse.success) console.log(apiResponse);
+        if (apiResponse.success) {
+          this.AuthService.login(formData)
+          .then(apiResponse => {
+            // Redirect
+            if (apiResponse.success) this.router.navigate(['/dashboard']);
+            // No account match
+            else this.submitFailure = true;
+          })
+          .catch(apiResponse => console.error(apiResponse));
+        }
         // Log user already exists
         else this.submitFailure = true;
       })
