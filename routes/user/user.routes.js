@@ -6,6 +6,7 @@ const express    = require('express');
 const userRouter = express.Router();
 
 const checkFields = require('../../services/request.checker');
+const { login }   = require('../auth/auth.ctrl');
 const { createItem, readItem, updatetem, deleteItem } = require('./user.ctrl');
 
 /**

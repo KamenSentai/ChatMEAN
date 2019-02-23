@@ -25,7 +25,7 @@ const login = (body, response) => {
 
         if (!validPassword) reject('Password not valid');
         else {
-          response.cookie('ChatMEAN', `${user.generateJwt()}${user._id}`);
+          response.cookie(process.env.COOKIE_TOKEN, `${user.generateJwt()}${user._id}`);
 
           return resolve(user);
         }
