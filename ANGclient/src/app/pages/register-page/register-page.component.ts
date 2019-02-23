@@ -89,7 +89,7 @@ export class RegisterPageComponent implements OnInit {
    * @param data
    */
   public formSubmit(data: UserModel): void {
-    const formData: UserModel = this.formData;
+    const formData: UserModel = data || this.formData;
     const nameRegex: RegExp = new RegExp(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð .'-]+$/u);
     const emailRegex: RegExp = new RegExp(/^([a-zA-Z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/);
     let error: Boolean = false;
@@ -158,7 +158,8 @@ export class RegisterPageComponent implements OnInit {
       this.AuthService.register(formData)
       .then(apiResponse => {
         // Redirect
-        if (apiResponse.success) this.router.navigate(['/dashboard']);
+        // if (apiResponse.success) this.router.navigate(['/dashboard']);
+        if (apiResponse.success) console.log(apiResponse);
         // Log user already exists
         else this.submitFailure = true;
       })

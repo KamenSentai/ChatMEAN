@@ -13,20 +13,18 @@ export class MessagesService {
   constructor(private HttpClient: HttpClient) { }
 
   public create(data: MessageModel): Promise<any> {
-    let header = new HttpHeaders();
-    header.append('Content-type', 'application/json');
-
-    return this.HttpClient.post(`${this.apiUrl}/messages/create`, data, { headers: header })
-    .toPromise()
-    .then(this.getData)
-    .catch(this.handleError);
+    return this.service(data, '/messages/create');
   }
 
   public read(data: UserModel): Promise<any> {
+    return this.service(data, '/messages/read');
+  }
+
+  private service(data: any, route: string): Promise<any> {
     let header = new HttpHeaders();
     header.append('Content-type', 'application/json');
 
-    return this.HttpClient.post(`${this.apiUrl}/messages/read`, data, { headers: header })
+    return this.HttpClient.post(`${this.apiUrl}${route}`, data, { headers: header })
     .toPromise()
     .then(this.getData)
     .catch(this.handleError);

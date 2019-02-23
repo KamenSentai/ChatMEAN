@@ -11,10 +11,14 @@ export class UsersService {
   constructor(private HttpClient: HttpClient) { }
 
   public fetch(): Promise<any> {
+    return this.service(undefined, '/users');
+  }
+
+  private service(data: any, route: string): Promise<any> {
     let header = new HttpHeaders();
     header.append('Content-type', 'application/json');
 
-    return this.HttpClient.post(`${this.apiUrl}/users`, { headers: header })
+    return this.HttpClient.post(`${this.apiUrl}${route}`, data, { headers: header })
     .toPromise()
     .then(this.getData)
     .catch(this.handleError);

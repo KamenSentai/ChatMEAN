@@ -13,30 +13,22 @@ export class AuthService {
   constructor(private HttpClient: HttpClient) { }
 
   public register(data: UserModel): Promise<any> {
-    let header = new HttpHeaders();
-    header.append('Content-type', 'application/json');
-
-    return this.HttpClient.post(`${this.apiUrl}/user`, data, { headers: header })
-    .toPromise()
-    .then(this.getData)
-    .catch(this.handleError);
+    return this.service(data, '/user');
   }
 
   public login(data: UserModel): Promise<any> {
-    let header = new HttpHeaders();
-    header.append('Content-type', 'application/json');
-
-    return this.HttpClient.post(`${this.apiUrl}/auth/login`, data, { headers: header })
-    .toPromise()
-    .then(this.getData)
-    .catch(this.handleError);
+    return this.service(data, '/auth/login');
   }
 
   public cookie(data: CookieModel): Promise<any> {
+    return this.service(data, '/auth/cookie');
+  }
+
+  private service(data: any, route: string): Promise<any> {
     let header = new HttpHeaders();
     header.append('Content-type', 'application/json');
 
-    return this.HttpClient.post(`${this.apiUrl}/auth/cookie`, data, { headers: header })
+    return this.HttpClient.post(`${this.apiUrl}${route}`, data, { headers: header })
     .toPromise()
     .then(this.getData)
     .catch(this.handleError);
