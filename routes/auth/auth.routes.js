@@ -2,7 +2,7 @@
  * Import
  */
 
-const express = require('express');
+const express    = require('express');
 const authRouter = express.Router();
 
 const checkFields = require('../../services/request.checker');
@@ -13,7 +13,7 @@ const { register, login, cookie } = require('./auth.ctrl');
  */
 
 class AuthRouterClass {
-  constructor() { }
+  constructor() {}
 
   routes() {
     authRouter.put('/register', (request, response) => {

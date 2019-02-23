@@ -8,7 +8,7 @@ const MessageModel = require('../../models/message.model');
  * Methods
  */
 
-const createItem = (body) => {
+const createItem = body => {
   return new Promise((resolve, reject) => {
     if (Object.entries(body).length !== 0 && body.constructor === Object) {
       MessageModel.create(body)
@@ -18,20 +18,20 @@ const createItem = (body) => {
   });
 };
 
-const readItem = (body) => {
+const readItem = body => {
   return new Promise((resolve, reject) => {
     MessageModel.find({}, (error, messages) => {
       let messagesFound = [];
 
       if (error) return reject(error);
       else {
-        messages.forEach((message) => {
+        messages.forEach(message => {
           if (message.from === body.email || message.to === body.email) messagesFound.push(message);
         });
 
         return resolve(messagesFound);
       }
-    })
+    });
   });
 };
 

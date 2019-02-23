@@ -10,7 +10,7 @@ const postRouter = express.Router();
  */
 
 class PostRouterClass {
-  constructor() { }
+  constructor() {}
 
   routes() {
     postRouter.post('/', (request, response) => {
@@ -34,7 +34,7 @@ class PostRouterClass {
     this.routes();
     return postRouter;
   }
-}
+};
 
 /**
  * Export

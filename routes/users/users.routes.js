@@ -2,7 +2,7 @@
  * Import
  */
 
-const express = require('express');
+const express     = require('express');
 const usersRouter = express.Router();
 
 const { fetch } = require('./users.ctrl');
@@ -12,7 +12,7 @@ const { fetch } = require('./users.ctrl');
  */
 
 class UsersRouterClass {
-  constructor() { }
+  constructor() {}
 
   routes() {
     usersRouter.post('/', (request, response) => {
@@ -30,7 +30,7 @@ class UsersRouterClass {
     this.routes();
     return usersRouter;
   }
-}
+};
 
 /**
  * Export

@@ -9,12 +9,12 @@ const UserModel = require('../models/user.model');
  * Definition
  */
 
-const cookieExtractor = (request) => {
+const cookieExtractor = request => {
   let token = null;
-  if (request && request.cookies) token = request.cookies['ChatMEAN'];
+  if (request && request.cookies) token = request.cookies[process.env.COOKIE_TOKEN];
 };
 
-const authJwt = (passport) => {
+const authJwt = passport => {
   const options = {
     jwtFromRequest: cookieExtractor,
     secretOrKey: process.env.JWT_SECRET
@@ -34,7 +34,7 @@ const authJwt = (passport) => {
  */
 
 module.exports = {
-  setAuthentification: (passport) => {
+  setAuthentification: passport => {
     authJwt(passport);
   }
 };

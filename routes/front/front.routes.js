@@ -2,7 +2,7 @@
  * Import
  */
 
-const express = require('express');
+const express     = require('express');
 const frontRouter = express.Router();
 
 /**
@@ -10,7 +10,7 @@ const frontRouter = express.Router();
  */
 
 class FrontRouterClass {
-  constructor() { }
+  constructor() {}
 
   routes() {
     frontRouter.get('/*', (request, response) => {
@@ -22,7 +22,7 @@ class FrontRouterClass {
     this.routes();
     return frontRouter;
   }
-}
+};
 
 /**
  * Export

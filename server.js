@@ -3,20 +3,20 @@
  */
 
 require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const ejs = require('ejs');
-const bodyParser = require('body-parser');
+const express      = require('express');
+const path         = require('path');
+const ejs          = require('ejs');
+const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
-const dbConnect = require('./services/mongodb.serv');
-const mainRouter = require('./routes/main.router');
+const dbConnect    = require('./services/mongodb.serv');
+const mainRouter   = require('./routes/main.router');
 
 /**
  * Configuration
  */
 
 const server = express();
-const port = process.env.PORT;
+const port   = process.env.PORT;
 
 class ServerClass {
   init() {
@@ -41,14 +41,14 @@ class ServerClass {
     .then(db => {
       server.listen(port, () => {
         console.log({
-          mongo: `DB is connected ${db}`,
-          server: `Server listening on port ${port}`
+          mongo  : `DB is connected ${db}`,
+          server : `Server listening on port ${port}`
         });
       });
     })
     .catch(err => console.log(`Error MongoDB ${err}`));
   }
-}
+};
 
 /**
  * Start server

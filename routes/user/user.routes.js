@@ -2,7 +2,7 @@
  * Import
  */
 
-const express = require('express');
+const express    = require('express');
 const userRouter = express.Router();
 
 const checkFields = require('../../services/request.checker');
@@ -13,7 +13,7 @@ const { createItem, readItem, updatetem, deleteItem } = require('./user.ctrl');
  */
 
 class UserRouterClass {
-  constructor() { }
+  constructor() {}
 
   routes() {
     userRouter.post('/', (request, response) => {
@@ -49,7 +49,7 @@ class UserRouterClass {
     this.routes();
     return userRouter;
   }
-}
+};
 
 /**
  * Export

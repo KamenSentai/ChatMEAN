@@ -2,8 +2,9 @@
  * Import
  */
 
-const express = require('express');
+const express    = require('express');
 const authRouter = express.Router();
+
 const { createItem, readItem } = require('./messages.ctrl');
 
 /**
@@ -11,7 +12,7 @@ const { createItem, readItem } = require('./messages.ctrl');
  */
 
 class MessagesRouterClass {
-  constructor() { }
+  constructor() {}
 
   routes() {
     authRouter.post('/create', (request, response) => {
@@ -31,7 +32,7 @@ class MessagesRouterClass {
     this.routes();
     return authRouter;
   }
-}
+};
 
 /**
  * Export

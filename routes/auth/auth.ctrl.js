@@ -10,7 +10,7 @@ const UserModel = require('../../models/user.model');
  * Methods
  */
 
-const register = (body) => {
+const register = body => {
   return new Promise((resolve, reject) => {
   });
 };
@@ -41,7 +41,7 @@ const cookie = (body, response) => {
 
       if (error) return reject(error);
       else {
-        users.forEach((user) => {
+        users.forEach(user => {
           if (body.value.includes(user._id)) {
             userFound = user;
             return resolve(userFound);
@@ -50,7 +50,7 @@ const cookie = (body, response) => {
 
         reject('User not valid');
       }
-    })
+    });
   });
 };
 

@@ -10,7 +10,7 @@ const UserModel = require('../../models/user.model');
  * Methods
  */
 
-const createItem = (body) => {
+const createItem = body => {
   return new Promise((resolve, reject) => {
     UserModel.findOne({ email: body.email }, (error, user) => {
       if (error) return reject(error);

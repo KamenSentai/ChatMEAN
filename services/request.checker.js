@@ -3,7 +3,7 @@
  */
 
 const checkFields = (required, body) => {
-  const miss = [];
+  const miss  = [];
   const extra = [];
 
   required.forEach(prop => {
@@ -12,7 +12,7 @@ const checkFields = (required, body) => {
 
   const success = (extra.length === 0 && miss.length === 0);
 
-  return { success, extra, miss }
+  return { success, extra, miss };
 }
 
 /**

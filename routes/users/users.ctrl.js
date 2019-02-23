@@ -15,13 +15,13 @@ const fetch = (body, response) => {
 
       if (error) return reject(error);
       else {
-        users.forEach((user) => {
+        users.forEach(user => {
           usersFound.push(user);
         });
 
         return resolve(usersFound);
       }
-    })
+    });
   });
 };
 

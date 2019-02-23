@@ -16,7 +16,7 @@ const dbConnect = () => {
     )
     .then(db => resolve(process.env.MONGO_URL))
     .catch(err => reject(err));
-  })
+  });
 }
 
 /**

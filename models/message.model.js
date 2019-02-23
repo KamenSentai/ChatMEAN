@@ -2,7 +2,7 @@
  * Import
  */
 
-const mongoose = require('mongoose');
+const mongoose   = require('mongoose');
 const { Schema } = mongoose;
 
 /**
@@ -10,10 +10,10 @@ const { Schema } = mongoose;
  */
 
 const messageSchema = new Schema({
-  from: String,
-  to: String,
-  value: String,
-  date: Date
+  from  : String,
+  to    : String,
+  value : String,
+  date  : Date
 });
 
 /**
