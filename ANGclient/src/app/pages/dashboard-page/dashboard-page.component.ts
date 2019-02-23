@@ -23,8 +23,6 @@ export class DashboardPageComponent implements OnInit {
   public messages: Array<MessageModel>;
   public messagesWithContact: Array<Array<MessageModel>>;
   public loaded: Boolean;
-  private url: String = 'http://localhost:9876/dashboard';
-  private socket;
 
   /**
    * @param router
