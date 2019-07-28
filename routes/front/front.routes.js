@@ -2,8 +2,8 @@
  * Import
  */
 
-const express     = require('express');
-const frontRouter = express.Router();
+const express     = require('express')
+const frontRouter = express.Router()
 
 /**
  * Definition
@@ -14,18 +14,18 @@ class FrontRouterClass {
 
   routes() {
     frontRouter.get('/*', (request, response) => {
-      response.render('index');
-    });
+      response.render('index')
+    })
   }
 
   init() {
-    this.routes();
-    return frontRouter;
+    this.routes()
+    return frontRouter
   }
-};
+}
 
 /**
  * Export
  */
 
-module.exports = FrontRouterClass;
+module.exports = FrontRouterClass

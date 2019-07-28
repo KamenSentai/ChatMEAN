@@ -2,7 +2,7 @@
  * Import
  */
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 /**
  * Configuration
@@ -15,12 +15,12 @@ const dbConnect = () => {
       { useNewUrlParser: true }
     )
     .then(db => resolve(process.env.MONGO_URL))
-    .catch(err => reject(err));
-  });
+    .catch(err => reject(err))
+  })
 }
 
 /**
  * Export
  */
 
-module.exports = dbConnect;
+module.exports = dbConnect

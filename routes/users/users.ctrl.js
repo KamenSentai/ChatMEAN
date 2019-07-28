@@ -2,7 +2,7 @@
  * Import
  */
 
-const UserModel = require('../../models/user.model');
+const UserModel = require('../../models/user.model')
 
 /**
  * Method
@@ -11,19 +11,19 @@ const UserModel = require('../../models/user.model');
 const fetch = (body, response) => {
   return new Promise((resolve, reject) => {
     UserModel.find({}, (error, users) => {
-      let usersFound = [];
+      let usersFound = []
 
-      if (error) return reject(error);
+      if (error) return reject(error)
       else {
         users.forEach(user => {
-          usersFound.push(user);
-        });
+          usersFound.push(user)
+        })
 
-        return resolve(usersFound);
+        return resolve(usersFound)
       }
-    });
-  });
-};
+    })
+  })
+}
 
 /**
  * Export
@@ -31,4 +31,4 @@ const fetch = (body, response) => {
 
 module.exports = {
   fetch
-};
+}

@@ -2,9 +2,9 @@
  * Import
  */
 
-const jwt        = require('jsonwebtoken');
-const mongoose   = require('mongoose');
-const { Schema } = mongoose;
+const jwt        = require('jsonwebtoken')
+const mongoose   = require('mongoose')
+const { Schema } = mongoose
 
 /**
  * Configuration
@@ -15,11 +15,11 @@ const userSchema = new Schema({
   lastname  : String,
   email     : String,
   password  : String
-});
+})
 
 userSchema.methods.generateJwt = () => {
-  const expiry = new Date();
-  expiry.setDate(expiry.getDate() + 59);
+  const expiry = new Date()
+  expiry.setDate(expiry.getDate() + 59)
 
   return jwt.sign({
     _id      : this._id,
@@ -27,12 +27,12 @@ userSchema.methods.generateJwt = () => {
     email    : this.email,
     expireIn : '10s',
     exp      : parseInt(expiry.getTime() / 100, 10)
-  }, process.env.JWT_SECRET);
-};
+  }, process.env.JWT_SECRET)
+}
 
 /**
 * Export
 */
 
-const userModel = mongoose.model('user', userSchema);
-module.exports  = userModel;
+const userModel = mongoose.model('user', userSchema)
+module.exports  = userModel

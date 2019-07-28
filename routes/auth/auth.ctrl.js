@@ -2,9 +2,9 @@
  * Imports
  */
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
-const UserModel = require('../../models/user.model');
+const UserModel = require('../../models/user.model')
 
 /**
  * Methods
@@ -12,47 +12,47 @@ const UserModel = require('../../models/user.model');
 
 const register = body => {
   return new Promise((resolve, reject) => {
-  });
-};
+  })
+}
 
 const login = (body, response) => {
   return new Promise((resolve, reject) => {
     UserModel.findOne({ email: body.email }, (error, user) => {
-      if (error) return reject(error);
-      else if (!user) return reject('Unknown user');
+      if (error) return reject(error)
+      else if (!user) return reject('Unknown user')
       else {
-        const validPassword = bcrypt.compareSync(body.password, user.password);
+        const validPassword = bcrypt.compareSync(body.password, user.password)
 
-        if (!validPassword) reject('Password not valid');
+        if (!validPassword) reject('Password not valid')
         else {
-          response.cookie(process.env.COOKIE_TOKEN, `${user.generateJwt()}${user._id}`);
+          response.cookie(process.env.COOKIE_TOKEN, `${user.generateJwt()}${user._id}`)
 
-          return resolve(user);
+          return resolve(user)
         }
       }
-    });
-  });
-};
+    })
+  })
+}
 
 const cookie = (body, response) => {
   return new Promise((resolve, reject) => {
     UserModel.find({}, (error, users) => {
-      let userFound;
+      let userFound
 
-      if (error) return reject(error);
+      if (error) return reject(error)
       else {
         users.forEach(user => {
           if (body.value.includes(user._id)) {
-            userFound = user;
-            return resolve(userFound);
+            userFound = user
+            return resolve(userFound)
           }
-        });
+        })
 
-        reject('User not valid');
+        reject('User not valid')
       }
-    });
-  });
-};
+    })
+  })
+}
 
 /**
  * Export
@@ -62,4 +62,4 @@ module.exports = {
   register,
   login,
   cookie
-};
+}

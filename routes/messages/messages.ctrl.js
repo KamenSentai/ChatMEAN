@@ -2,7 +2,7 @@
  * Import
  */
 
-const MessageModel = require('../../models/message.model');
+const MessageModel = require('../../models/message.model')
 
 /**
  * Methods
@@ -13,27 +13,27 @@ const createItem = body => {
     if (Object.entries(body).length !== 0 && body.constructor === Object) {
       MessageModel.create(body)
       .then(mongoResponse => resolve(mongoResponse))
-      .catch(mongoResponse => reject(mongoResponse));
+      .catch(mongoResponse => reject(mongoResponse))
     }
-  });
-};
+  })
+}
 
 const readItem = body => {
   return new Promise((resolve, reject) => {
     MessageModel.find({}, (error, messages) => {
-      let messagesFound = [];
+      let messagesFound = []
 
-      if (error) return reject(error);
+      if (error) return reject(error)
       else {
         messages.forEach(message => {
-          if (message.from === body.email || message.to === body.email) messagesFound.push(message);
-        });
+          if (message.from === body.email || message.to === body.email) messagesFound.push(message)
+        })
 
-        return resolve(messagesFound);
+        return resolve(messagesFound)
       }
-    });
-  });
-};
+    })
+  })
+}
 
 /**
  * Export
@@ -42,4 +42,4 @@ const readItem = body => {
 module.exports = {
   createItem,
   readItem
-};
+}

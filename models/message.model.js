@@ -2,8 +2,8 @@
  * Import
  */
 
-const mongoose   = require('mongoose');
-const { Schema } = mongoose;
+const mongoose   = require('mongoose')
+const { Schema } = mongoose
 
 /**
  * Configuration
@@ -14,11 +14,11 @@ const messageSchema = new Schema({
   to    : String,
   value : String,
   date  : Date
-});
+})
 
 /**
 * Export
 */
 
-const messageModel = mongoose.model('message', messageSchema);
-module.exports = messageModel;
+const messageModel = mongoose.model('message', messageSchema)
+module.exports = messageModel
