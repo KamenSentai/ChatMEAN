@@ -12,6 +12,7 @@ const UserModel = require('../models/user.model')
 const cookieExtractor = request => {
   let token = null
   if (request && request.cookies) token = request.cookies[process.env.COOKIE_TOKEN]
+  return token
 }
 
 const authJwt = passport => {
@@ -34,7 +35,7 @@ const authJwt = passport => {
  */
 
 module.exports = {
-  setAuthentification: passport => {
+  setAuthentication: passport => {
     authJwt(passport)
   }
 }
